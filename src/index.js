@@ -3,18 +3,6 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
 
-
-class ShoppingList extends React.Component{
-    render(){
-        return React.createElement('div', {className: 'shopping-list'},
-            React.createElement('h1', null, "Shopping list for ", this.props.name),
-            React.createElement('ul', null, React.createElement("li", null, "Instgram"),
-                React.createElement("li", null, "Whatsapp"),
-                React.createElement("li", null, "Oculus"))
-        );
-    }
-}
-
 class Square extends React.Component{
     render(){
         return (
