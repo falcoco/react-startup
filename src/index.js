@@ -1,20 +1,6 @@
-'use strict';
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
-
-// class Square extends React.Component{
-//     render(){
-//         return (
-//             <button
-//                 className="square"
-//                 onClick={()=>this.props.onClick()}
-//             >
-//                 {this.props.value}
-//             </button>
-//         );
-//     }
-// }
 
 function Square(props) {
     return (
@@ -117,6 +103,20 @@ class Game extends React.Component{
         const history = this.state.history;
         const current = history[history.length - 1];
         const winnner = calculateWinner(current.squares);
+
+        const moves = history.map((step, move) => {
+            const desc = move ?
+                'Go to move #' + move :
+                'Go to game start';
+            return(
+                <li>
+                    <button onClick={() => this.jumpTo(move)} >
+                        { desc }
+                    </button>
+                </li>
+            )
+        });
+
         let status;
         if(winnner){
             status = 'Winner: '+ winnner;
@@ -133,8 +133,8 @@ class Game extends React.Component{
                     />
                 </div>
                 <div className="game-info">
-                    <div>{status}</div>
-                    <div></div>
+                    <div>{ status }</div>
+                    <div>{ moves }</div>
                 </div>
             </div>
         );
